@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_app/projects/calculatorScreen.dart';
 import 'package:portfolio_app/projects/stopwatch.dart';
 import 'package:portfolio_app/projects/steps_count.dart';
+import 'package:portfolio_app/projects/addTask.dart';
 
 class ProjectsScreen extends StatefulWidget {
   const ProjectsScreen({super.key});
@@ -27,6 +28,11 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
       'description': 'A simple steps counter app built with Flutter.',
       'route': '/stepsCounter', // Route for StepsCounter
     },
+    {
+      'title': 'To-Do List',
+      'description': 'A simple To-Do List counter app built with Flutter.',
+      'route': '/addTask', // Route for StepsCounter
+    },
   ];
 
   @override
@@ -47,7 +53,8 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
                 if (project['route'] == '/calculator') {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const CalculatorView()),
+                    MaterialPageRoute(
+                        builder: (context) => const CalculatorView()),
                   );
                 } else if (project['route'] == '/stopwatch') {
                   Navigator.push(
@@ -58,6 +65,11 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const StepsCount()),
+                  );
+                }else if (project['route'] == '/addTask') {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AddTask()),
                   );
                 }
               },
