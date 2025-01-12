@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app/projects/calculatorScreen.dart';
+import 'package:portfolio_app/projects/stopwatch.dart';
+import 'package:portfolio_app/projects/steps_count.dart';
 
 class ProjectsScreen extends StatefulWidget {
   const ProjectsScreen({super.key});
@@ -12,14 +15,17 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
     {
       'title': 'Calculator',
       'description': 'A simple calculator app built with Flutter.',
+      'route': '/calculator', // Route for Calculator
     },
     {
       'title': 'Stopwatch',
       'description': 'A simple stopwatch app built with Flutter.',
+      'route': '/stopwatch', // Route for Stopwatch
     },
     {
       'title': 'Steps counter',
       'description': 'A simple steps counter app built with Flutter.',
+      'route': '/stepsCounter', // Route for StepsCounter
     },
   ];
 
@@ -37,16 +43,23 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
               subtitle: Text(project['description'] ?? ''),
               leading: const Icon(Icons.work_outline),
               onTap: () {
-                // Navigate to Project Detail Screen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ProjectDetailScreen(
-                      title: project['title'] ?? '',
-                      description: project['description'] ?? '',
-                    ),
-                  ),
-                );
+                // Navigate to the specific project screen based on route
+                if (project['route'] == '/calculator') {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CalculatorView()),
+                  );
+                } else if (project['route'] == '/stopwatch') {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Stopwatch()),
+                  );
+                } else if (project['route'] == '/stepsCounter') {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const StepsCount()),
+                  );
+                }
               },
             ),
           );
